@@ -1,16 +1,12 @@
 <?php
 class Usuario
 {
-    private $legajo;
     private $email;
-    private $nombre;
     private $clave;
 
-    function __construct($legajo, $email, $nombre, $clave)
+    function __construct($email, $clave)
     {
-        $this->legajo = $legajo;
         $this->email = $email;
-        $this->nombre = $nombre;
         $this->clave = $clave;
     }
 
@@ -28,7 +24,7 @@ class Usuario
     
     public function __toString()
     {        
-        return "legajo: $this->legajo  || email: $this->email || nombre: $this->nombre   </br>";
+        return "email: $this->email </br>";
     }
 
 
@@ -43,9 +39,7 @@ class Usuario
     {
         return 
         [
-            'legajo'   => $this->legajo,
             'email'   => $this->email,
-            'nombre' => $this->nombre,
             'clave' => $this->clave
         ];
     }

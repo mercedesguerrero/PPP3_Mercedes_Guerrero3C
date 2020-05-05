@@ -35,7 +35,7 @@ switch ($method)
     //var_dump($_POST);
         switch (key($_POST)) {
             case 'ususario'://POST
-                include "funciones/cargarUsuario.php";
+                include "funciones/usuario.php";
                 break;    
             case 'login'://POST
                 include "funciones/modificarUsuario.php";
