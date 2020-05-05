@@ -3,9 +3,11 @@ class Usuario
 {
     private $email;
     private $clave;
+    private $Id;
 
-    function __construct($email, $clave)
+    function __construct($Id,$email, $clave)
     {
+        $this->Id = $Id;
         $this->email = $email;
         $this->clave = $clave;
     }
@@ -30,7 +32,7 @@ class Usuario
 
     /** Devuelve array con nombres de las propiedades de la clase (para los headers de la tabla) */
     public static function getPublicProperties(){        
-        return array('legajo','email','nombre','clave','nomFoto1','nomFoto2');
+        return array('Id','email','clave');
         
     }
 
@@ -39,6 +41,7 @@ class Usuario
     {
         return 
         [
+            'Id' => $this->Id,
             'email'   => $this->email,
             'clave' => $this->clave
         ];
@@ -58,20 +61,20 @@ class Usuario
         
         foreach ($json_data as $key => $value) 
         {                                                                                
-            array_push($retorno, new Usuario($json_data[$key]['legajo'],$json_data[$key]['email'],$json_data[$key]['nombre'],$json_data[$key]['clave']));
+            array_push($retorno, new Usuario($json_data[$key]['Id'],$json_data[$key]['email'],$json_data[$key]['clave']));
         }
 
         return $retorno;
     }
 
-    public static function AltaUsuario($path, $email, $nombre, $clave, $imagen1, $imagen2)
+    public static function AltaUsuario($path, $email, $clave)
     {
         echo "<br>Entro en alta Usuario</br>";
         $lista= self::leerFromJSON($path);    
         
         $maxId = self::TraerMayorId($lista);
-        $legajo= $maxId + 1;
-        $user= self::BuscaXCriterio($lista, "legajo", $legajo);
+        $Id= $maxId + 1;
+        $user= self::BuscaXCriterio($lista, "Id", $Id);
         
         if($user!=null)
         {
@@ -79,15 +82,10 @@ class Usuario
         }
         else
         { 
-            $user= new Usuario($legajo, $email, $nombre, $clave);     
+            $user= new Usuario($Id, $email, $clave);     
             array_push($lista, $user);
             self::guardarJSON($lista, $path);
             echo "<br>El Usuario se guardó<br>";
-
-            if(self::CargarImagen($imagen1, $legajo, RUTA_CARPETA_IMAGENES, 1) && self::CargarImagen($imagen2, $legajo, RUTA_CARPETA_IMAGENES, 2))
-            {
-                echo "<br>SE CARGO EL USUARIO CON IMAGENES.<br>";
-            }
 
             echo $user->jsonSerialize();
                 
@@ -120,12 +118,12 @@ class Usuario
 
         if($lista!=null)
         {
-            $maxId= $lista[0]->legajo;
+            $maxId= $lista[0]->Id;
             foreach ($lista as $user)
             {
-                if($user->legajo > $maxId)
+                if($user->Id > $maxId)
                 {
-                    $maxId = $user->legajo;
+                    $maxId = $user->Id;
                 }
             }
         }
