@@ -1,9 +1,11 @@
 <?php
 require_once 'clases/Usuario.php';
+require_once 'clases/Materia.php';
 require_once 'clases/Log.php';
 
 //$RUTA_USUARIOS="./archivos/usuarios.txt";
 define("RUTA_USUARIOS", "./archivos/usuarios.txt"); 
+define("RUTA_MATERIAS", "./archivos/materias.txt");
 define("RUTA_CARPETA_IMAGENES", "./img/"); 
 define("RUTA_CARPETA_BACKUP", "./img/backup/"); 
 define("RUTA_LOGS", "./archivos/logs.txt"); 
@@ -41,7 +43,7 @@ switch ($method)
                 include "funciones/login.php";
                 break;   
             case 'materia'://POST
-                include "funciones/modificarUsuario.php";
+                include "funciones/materia.php";
                 break;     
             case 'profesor'://POST
                 include "funciones/modificarUsuario.php";

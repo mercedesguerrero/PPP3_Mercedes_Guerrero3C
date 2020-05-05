@@ -1,0 +1,1 @@
+[{"id":null,"nombre":null,"cuatrimestre":null},{"id":1,"nombre":"Estadistica","cuatrimestre":"1"},{"id":2,"nombre":"Estadistica","cuatrimestre":"1"}]
