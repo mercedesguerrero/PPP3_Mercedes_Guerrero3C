@@ -17,17 +17,14 @@ switch ($method)
     case "GET":
     //var_dump($_GET);
         switch (key($_GET)) {
-            case 'login':
+            case 'materia':
                 include "funciones/login.php";
                 break;
-            case 'verUsuarios':
+            case 'profesor':
                 include "funciones/verUsuarios.php";
                 break;
-            case 'verUsuario':
+            case 'asignacion':
                 include "funciones/verUsuario.php";
-                break;
-            case 'logs':
-                include "funciones/logs.php";
                 break;
         }
         $caso= key($_GET);
@@ -37,12 +34,21 @@ switch ($method)
     case "POST":
     //var_dump($_POST);
         switch (key($_POST)) {
-            case 'cargarUsuario'://POST
+            case 'ususario'://POST
                 include "funciones/cargarUsuario.php";
                 break;    
-            case 'modificarUsuario'://POST
+            case 'login'://POST
                 include "funciones/modificarUsuario.php";
-                break;          
+                break;   
+            case 'materia'://POST
+                include "funciones/modificarUsuario.php";
+                break;     
+            case 'profesor'://POST
+                include "funciones/modificarUsuario.php";
+                break;  
+            case 'asignacion'://POST
+                include "funciones/modificarUsuario.php";
+                break;    
         }
         $caso= key($_POST);
         include 'funciones/logsDeLaAplicacion.php';
