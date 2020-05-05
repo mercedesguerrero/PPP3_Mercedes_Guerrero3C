@@ -38,7 +38,7 @@ switch ($method)
                 include "funciones/usuario.php";
                 break;    
             case 'login'://POST
-                include "funciones/modificarUsuario.php";
+                include "funciones/login.php";
                 break;   
             case 'materia'://POST
                 include "funciones/modificarUsuario.php";

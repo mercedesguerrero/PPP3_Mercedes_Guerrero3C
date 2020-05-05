@@ -1,14 +1,14 @@
 <?php
-    if(isset($_GET['legajo']) && isset($_GET['clave']))
+    if(isset($_POST['email']) && isset($_POST['clave']))
     {
-        $legajo = $_GET['legajo'];
-        $clave = $_GET['clave'];
+        $email = $_POST['email'];
+        $clave = $_POST['clave'];
 
-        Usuario::login($legajo, $clave);
+        Usuario::login($email, $clave);
         
     }
     else
     {
-        echo 'Error cargue "legajo" y "clave".';
+        echo 'Error cargue "email" y "clave".';
     }
 ?>

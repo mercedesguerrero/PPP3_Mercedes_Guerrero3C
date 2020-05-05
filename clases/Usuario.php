@@ -74,7 +74,7 @@ class Usuario
         
         $maxId = self::TraerMayorId($lista);
         $Id= $maxId + 1;
-        $user= self::BuscaXCriterio($lista, "Id", $Id);
+        $user= self::BuscaXCriterio($lista, "email", $email);
         
         if($user!=null)
         {
@@ -87,7 +87,7 @@ class Usuario
             self::guardarJSON($lista, $path);
             echo "<br>El Usuario se guardó<br>";
 
-            echo $user->jsonSerialize();
+            echo $user;
                 
             // else
             // {
@@ -198,11 +198,11 @@ class Usuario
         return "<div> " . $retorno . "</div>";
     }
 
-    static public function login($legajo, $clave)
+    static public function login($email, $clave)
     {
-        echo "<br>Entro en login con datos:  $legajo , $clave </br>";    
+        echo "<br>Entro en login con datos:  $email , $clave </br>";    
         $lista= Usuario::leerFromJSON(RUTA_USUARIOS);        
-        $user= self::BuscaXCriterio($lista, "legajo", $legajo);
+        $user= self::BuscaXCriterio($lista, "email", $email);
         
         if($user==null)
         {
