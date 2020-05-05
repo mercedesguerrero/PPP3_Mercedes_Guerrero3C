@@ -23,10 +23,10 @@ switch ($method)
                 include "funciones/login.php";
                 break;
             case 'profesor':
-                include "funciones/verUsuarios.php";
+                include "funciones/profesor.php";
                 break;
             case 'asignacion':
-                include "funciones/verUsuario.php";
+                include "funciones/asignacion.php";
                 break;
         }
         $caso= key($_GET);
@@ -46,10 +46,10 @@ switch ($method)
                 include "funciones/materia.php";
                 break;     
             case 'profesor'://POST
-                include "funciones/modificarUsuario.php";
+                include "funciones/profesor.php";
                 break;  
             case 'asignacion'://POST
-                include "funciones/modificarUsuario.php";
+                include "funciones/asignacion.php";
                 break;    
         }
         $caso= key($_POST);
